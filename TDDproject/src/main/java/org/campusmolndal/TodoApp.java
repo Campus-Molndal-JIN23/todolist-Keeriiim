@@ -135,13 +135,30 @@ class TodoApp {
         }
     }
 
-    public void updateUser(int id, String newName) {
+    public void updateUser(int id, String newName, int newAge) { // Method that updates a User with a specific ID
         User user = findUserById(id);
         if (user != null) {
+
             user.setName(newName);
+            user.setAge(newAge);
             System.out.println("User updated. New name: " + newName);
+            System.out.println("User updated. New age: " + newAge);
         } else {
             System.out.println("User not found with ID: " + id);
+        }
+    }
+
+    public void updateTodoById(int id, String newText, boolean done, int newAssigneed) {
+        Todo todo = findTodoById(id);
+        if (todo != null) {
+            todo.setText(newText);
+            todo.setDone(done);
+            todo.setAssignedTo(newAssigneed);
+            System.out.println("Todo updated. New text: " + newText);
+            System.out.println("Todo updated. Done status: " + done);
+            System.out.println("Todo updated. New assignee: " + newAssigneed);
+        } else {
+            System.out.println("Todo not found with ID: " + id);
         }
     }
 

@@ -105,20 +105,34 @@ public class Menu {
                     }
                     break; // End of case 2 main menu
 
-
-
-
-
-
                 case 3: // Update
-                    break; // End of case 3 main menu
+                int option_3 = scan.nextInt();
+                switch(option_3){
+                    case 1: // Update an user
+                        System.out.println("Please enter the user ID:");
+                        id = scan.nextInt();
+                        System.out.println("Please enter the user name:");
+                        scan.nextLine();
+                        name = scan.nextLine();
+                        System.out.println("Please enter the user age:");
+                        age = scan.nextInt();
+                        todoApp.updateUser(id, name, age);
+                        break;
 
-
-
-
-
-
-
+                    case 2: // Update a todo
+                        System.out.println("Please enter the todo ID:");
+                        id = scan.nextInt();
+                        System.out.println("Please enter the todo text:");
+                        scan.nextLine();
+                        text = scan.nextLine();
+                        System.out.println("Is it done? (true/false):");
+                        done = scan.nextBoolean();
+                        System.out.println("What ID should it be assigned to?:");
+                        assignedTo = scan.nextInt();
+                        todoApp.updateTodoById(id, text, done, assignedTo);
+                        break;
+                }
+                break; // End of case 3 main menu
 
                 case 4: // Show
                     System.out.println("1. Show an user");
