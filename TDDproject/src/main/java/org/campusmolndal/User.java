@@ -7,7 +7,7 @@ class User {
     private int id;
     private String name;
     private int age;
-    private List<List<Todo>> userTodos;
+    private List<List<org.campusmolndal.Todo>> userTodos;
 
     public User(int id, String name, int age) { // Constructor for User
         this.id = id;

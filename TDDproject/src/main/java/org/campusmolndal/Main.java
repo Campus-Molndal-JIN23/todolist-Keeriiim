@@ -11,7 +11,6 @@ package org.campusmolndal;
 
 
 public class Main {
-    private static TodoApp todoApp;
     public static void main(String[] args) {
         Menu menu = new Menu();
 

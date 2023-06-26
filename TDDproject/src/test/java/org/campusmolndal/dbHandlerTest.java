@@ -1,5 +1,8 @@
 package org.campusmolndal;
 
+import org.campusmolndal.Todo;
+import org.campusmolndal.TodoApp;
+import org.campusmolndal.User;
 import org.campusmolndal.dbHandler;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -1,5 +1,6 @@
 package org.campusmolndal;
 
+import org.campusmolndal.Menu;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

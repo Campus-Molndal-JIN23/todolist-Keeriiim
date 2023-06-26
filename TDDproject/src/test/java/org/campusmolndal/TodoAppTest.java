@@ -1,5 +1,8 @@
 package org.campusmolndal;
 
+import org.campusmolndal.Todo;
+import org.campusmolndal.TodoApp;
+import org.campusmolndal.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -180,7 +183,7 @@ class TodoAppTest {
 
         // Act
         todoApp.createUser(1, "John", 25);
-        todoApp.updateUser(1, "Jane");
+        todoApp.updateUser(1, "Jane", 30);
         List<User> users = todoApp.getUsers();
 
         // Assert
