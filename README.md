@@ -5,7 +5,6 @@
 ## Description
 This project is a ToDo application that can be used to create, read, update and delete tasks. The application is built with Java and uses Maven as a build tool.
 The application is tested with JUnit and Mockito. For this project i used ChatGPT to generate the test class for the database.
-I learned 
 
 ## Table of Contents 
 - [Installation](#installation)
@@ -26,6 +25,7 @@ The dependencies are found in the pom.xml file.
 
 ## Usage
 The main purpose for this project is to create a ToDo application that can be used to create, read, update and delete tasks.
+When you start the program you will be prompted to choose different number options. Pick a number and follow the instructions.
 
 ## License
 Copyright (c) 2023 Kerim Kozo
