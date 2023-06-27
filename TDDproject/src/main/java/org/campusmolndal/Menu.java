@@ -14,7 +14,6 @@ public class Menu {
         startMenu();
     }
 
-    // I want in the beginning to check if my db
 
     private void startMenu(){
         this.todoApp.setUsers(dbhandler.loadUsersFromDatabase());

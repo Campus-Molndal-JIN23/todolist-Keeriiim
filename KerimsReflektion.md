@@ -2,9 +2,10 @@
 
 ## Projektet
 
+
 ### Beskrivning av projektet
 Projektet är en applikation som skapar users & todos associerade till dem. Både users och todos kan ändras genom CRUD och
-sparas slutligen i en databas.
+sparas slutligen i en databas. 
 
 ## Planering
 Projektet planerades genom att skriva ned tankar och ideer. Därefter påbörjades ett försök
@@ -46,3 +47,25 @@ Jag har definitivt övat på att skriva ett komplett program och tillämpa teste
 Viktigaste förändringen för mig är att jag är mer medveten om att jag bör försöka krascha mitt test ifall jag vill försäkra mig om en stabil produkt.
 Tidigare när jag inte kände till tester så var mina tankar mer fokuserade på att skriva en "perfekt kod" från början. Nu med denna kunskap så ser jag hur
 omöjligt det är att skriva en perfekt kod från början. Det är bättre att skriva en kod som fungerar och sedan förbättra den med hjälp av tester.
+
+## VG-reflektion
+
+### Motivering till lösningar
+Jag valde mina lösningar baserat på det jag ansåg var mest effektivt. T.ex ansåg jag det vara onödig komplexitet att spara datan på en fil och läsa in den vid programstart.
+Det är mycket enklare och bättre lösning att läsa kopiera in informationen från databasen till tomma listor och sedan hantera dem.
+Jag valde också att ha en flera klasser samt en klass som behandlar listorna enligt CRUD. Detta för att göra programmet lättare att felsöka när det blir fel.
+
+### Förbättringsförslag
+Det finns en hel del möjlighet till att förbättra min kod. Till en början behöver jag göra fler tester för att säkerställa att programmet blir stabilare.
+Jag behöver även se över min kod i helhet, både testerna samt själva programmet. Det finns flera exempel där jag hade kunnat förtydliga namn på variablar samt skriva bättre kod.
+Jag ser även förbättringsmöjligheter i databasklassen gällande kodstruktur och att lägga till t.ex en autokorrigering av autoincrement.
+
+### Ej implementerade lösningar
+- En idee var att skapa en lista för users, en lista för todos, och en lista för tasks för varje todo.
+- En annan idee var att skriva över informationen från databasen på en fil och läsa av filen vid programstart.
+
+### UI/UX design
+Jag har inte lagt någon vikt på designen. Jag har fokuserat på att få programmet att fungera som det är tänkt.
+Det som hade kunnat läggas till rent backend-mässigt vore isåfall att ha flera select alternativ för att visa specifik information
+från databasen. För övrigt hade man kunnat skapa en grafisk design genom javafx för att göra programmet mer tilltalande.
+

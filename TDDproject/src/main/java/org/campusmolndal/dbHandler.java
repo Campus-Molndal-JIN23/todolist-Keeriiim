@@ -58,8 +58,6 @@ public class dbHandler {
         todoApp.setUsers(users);
         todoApp.setTodos(todos);
 
-        // Now you can store the populated lists in your TodoApp class
-        // and perform any necessary operations on them
     }
 
     public List<User> loadUsersFromDatabase() {
@@ -138,13 +136,6 @@ public class dbHandler {
             System.out.println(e.getMessage());
         }
     }
-
-
-
-
-
-
-
     public void updateUserTable(TodoApp todoApp) {
         this.todoApp = todoApp;
         try (Statement stmt = conn.createStatement()) {
@@ -200,19 +191,6 @@ public class dbHandler {
             System.out.println(e.getMessage());
         }
     }
-
-   /* public void autoUpdateId(Connection conn){ // Updates the id column to be in order if movies are deleted
-        try {
-            PreparedStatement ps = conn.prepareStatement("UPDATE movies SET id = (SELECT COUNT(*) FROM movies m WHERE m.id < movies.id) + 1");
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
-
-
-
 }
 
 

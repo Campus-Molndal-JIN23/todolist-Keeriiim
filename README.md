@@ -3,13 +3,9 @@
 # ToDoApplication
 
 ## Description
-
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+This project is a ToDo application that can be used to create, read, update and delete tasks. The application is built with Java and uses Maven as a build tool.
+The application is tested with JUnit and Mockito. For this project i used ChatGPT to generate the test class for the database.
+I learned 
 
 ## Table of Contents 
 - [Installation](#installation)
@@ -17,6 +13,7 @@ Provide a short description explaining the what, why, and how of your project. U
 - [Usage](#usage)
 - [License](#license)
 - [Contribute](#contribute)
+- [Acknowledgements](#acknowledgements)
 
 
 
@@ -25,19 +22,17 @@ The project is built with Maven and the dependencies are listed in the pom.xml f
 This project was coded with java version 19.0.1.
 
 ## Dependencies
-These dependencies are found in the pom.xml file:
-
-org.junit.jupiter:junit-jupiter:5.9.3
-org.junit:junit:RELEASE
-org.mockito:mockito-core:5.3.1
-org.json:json:20230227
+The dependencies are found in the pom.xml file.
 
 ## Usage
 The main purpose for this project is to create a ToDo application that can be used to create, read, update and delete tasks.
 
 ## License
 Copyright (c) 2023 Kerim Kozo
-MIT License.
+[MIT License](https://choosealicense.com/licenses/mit/)
 
 ## Contribute
 Feel free to pull and expand on this project.
+
+## Acknowledgements
+The test meets the requirements - Samer Ismaeel

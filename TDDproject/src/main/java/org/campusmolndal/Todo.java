@@ -1,6 +1,6 @@
 package org.campusmolndal;
 
-class Todo { //
+class Todo { // Class for Todo
     private int id;
     private String text;
     private boolean done;
@@ -12,7 +12,6 @@ class Todo { //
         this.done = done;
         this.assignedTo = assignedTo;
     }
-    // tog bort id från konstruktorn
 
     // Getters and setters for Todo
     public int getId() {
