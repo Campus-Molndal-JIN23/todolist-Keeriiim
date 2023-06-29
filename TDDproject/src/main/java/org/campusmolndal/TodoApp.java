@@ -57,9 +57,10 @@ class TodoApp {
         }
     }
 
-    public void deleteAllUsers() {
+    public List deleteAllUsers() {
         users.clear();
         System.out.println("All users deleted");
+        return users;
     }
     public void deleteTodoById(int id) {
         Todo todo = findTodoById(id);
@@ -71,9 +72,10 @@ class TodoApp {
         }
     }
 
-    public void deleteAllTodos() {
+    public List deleteAllTodos() {
         todos.clear();
         System.out.println("All todos deleted");
+        return todos;
     }
 
 

@@ -87,7 +87,7 @@ public class Menu {
                             break;
 
                         case 2: // Delete all users
-                            todoApp.deleteAllUsers();
+                            this.todoApp.setUsers(todoApp.deleteAllUsers());
                             break;
 
 
@@ -98,7 +98,7 @@ public class Menu {
                             break;
 
                         case 4: // Delete all todos
-                            todoApp.showAllTodos();
+                            this.todoApp.setTodos(todoApp.deleteAllTodos());
                             break;
                     }
                     break; // End of case 2 main menu

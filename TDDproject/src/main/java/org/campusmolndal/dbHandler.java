@@ -139,55 +139,47 @@ public class dbHandler {
     public void updateUserTable(TodoApp todoApp) {
         this.todoApp = todoApp;
         try (Statement stmt = conn.createStatement()) {
-                for (int i = 1; i <= this.todoApp.getUsers().size(); i++){ // Loops through all users
-                    if(this.todoApp.findUserById(i) != null){
-                        int id = this.todoApp.findUserById(i).getId();
-                        String userName = this.todoApp.findUserById(i).getName(); // Gets the name of the user
-                        int userAge = this.todoApp.findUserById(i).getAge(); // Gets the age of the user
+            // Delete all existing users from the database
+                String deleteUserSql = "DELETE FROM Users";
+                stmt.executeUpdate(deleteUserSql);
 
+            // Insert all users from the userList into the database
+            List<User> userList = this.todoApp.getUsers();
+            for (User user : userList) {
+                int id = user.getId();
+                String userName = user.getName();
+                int userAge = user.getAge();
 
-                    String checkUserSql = "SELECT * FROM Users WHERE id=" + id; // Query to check if the user already exists
-                    ResultSet resultSet = stmt.executeQuery(checkUserSql); // Executes the query
-
-
-                    if (!resultSet.next()) { // If the user doesn't exist, insert them into the database
-                        String insertUserSql = "INSERT INTO Users (id, name, age) VALUES (" + id + ",'" + userName + "'," + userAge + ")";
-                        stmt.executeUpdate(insertUserSql);
-                    }
-
-                    }
-                }
+                String insertUserSql = "INSERT INTO Users (id, name, age) VALUES (" + id + ",'" + userName + "'," + userAge + ")";
+                stmt.executeUpdate(insertUserSql);
+            }
         } catch (SQLException e) {
-                    System.out.println("Failed to add user to the database.");
-                    System.out.println(e.getMessage());
+            System.out.println("Failed to update user table in the database.");
+            System.out.println(e.getMessage());
         }
     }
 
     public void updateToDoListsTable(TodoApp todoApp) {
         this.todoApp = todoApp;
         try (Statement stmt = conn.createStatement()) {
+            // Delete all existing to-do lists from the database
+            String deleteAllSql = "DELETE FROM ToDoLists";
+            stmt.executeUpdate(deleteAllSql);
 
-            for (int i = 1; i <= this.todoApp.getTodos().size(); i++){ // Loops through all to-do lists
-                if(this.todoApp.findTodoById(i) != null){
-                    int id = this.todoApp.findTodoById(i).getId(); // Gets the id of the user that the to-do list belongs to
-                    String listName = this.todoApp.findTodoById(i).getText(); // Gets the name of the to-do list
-                    boolean done = this.todoApp.findTodoById(i).isDone(); // Gets the status of the to-do list
-                    int assignedTo = this.todoApp.findTodoById(i).getAssignedTo(); // Gets the name of the user that the to-do list belongs to
+            // Insert all to-do lists from the toDoList into the database
+            List<Todo> toDoList = this.todoApp.getTodos();
+            for (Todo todo : toDoList) {
+                int id = todo.getId(); // Gets the id of the to-do list
+                String listName = todo.getText(); // Gets the name of the to-do list
+                boolean done = todo.isDone(); // Gets the status of the to-do list
+                int assignedTo = todo.getAssignedTo(); // Gets the user ID of the assigned user
 
-                    String checkUserSql = "SELECT * FROM ToDoLists WHERE id=" + id; // Query to check if the user already exists
-                    ResultSet resultSet = stmt.executeQuery(checkUserSql);
-
-
-                    if (!resultSet.next()) { // If the user doesn't exist, insert them into the database
-                        String insertListSql = "INSERT INTO ToDoLists (id, text, done, assignedTo) VALUES " +
-                                "(" + id + ",'" + listName + "'," + done + "," + assignedTo + ")"; // Inserts the to-do list into the database
-                        stmt.executeUpdate(insertListSql);
-                    }
-                 }
-           }
-        }
-        catch (SQLException e) {
-            System.out.println("Failed to add to-do list to the database.");
+                String insertListSql = "INSERT INTO ToDoLists (id, text, done, assignedTo) VALUES " +
+                        "(" + id + ",'" + listName + "'," + done + "," + assignedTo + ")"; // Inserts the to-do list into the database
+                stmt.executeUpdate(insertListSql);
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to update the to-do list table in the database.");
             System.out.println(e.getMessage());
         }
     }

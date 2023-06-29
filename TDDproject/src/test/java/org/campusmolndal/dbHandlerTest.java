@@ -2,10 +2,14 @@ package org.campusmolndal;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.mockito.configuration.IMockitoConfiguration;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
 public class dbHandlerTest{
 
@@ -15,9 +19,9 @@ public class dbHandlerTest{
         Connection conn = Mockito.mock(Connection.class); // Create a mock connection
         Statement stmt = Mockito.mock(Statement.class); // Create a mock statement
         ResultSet rs = Mockito.mock(ResultSet.class); // Create a mock result set
-        Mockito.when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
-        Mockito.when(stmt.executeQuery(Mockito.anyString())).thenReturn(rs); // When the statement is executed, return the mock result set
-        Mockito.when(rs.next()).thenReturn(true); // When the result set is called, return true
+        when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
+        when(stmt.executeQuery(anyString())).thenReturn(rs); // When the statement is executed, return the mock result set
+        when(rs.next()).thenReturn(true); // When the result set is called, return true
 
         dbHandler handler = new dbHandler(); // Create a new instance of the dbHandler class
         handler.conn = conn; // Set the connection to the mock connection
@@ -27,9 +31,9 @@ public class dbHandlerTest{
 
         // Assert
         assertTrue(result); // Verify that the result is false
-        Mockito.verify(conn, Mockito.times(1)).createStatement(); // Verify that the connection is created once
-        Mockito.verify(stmt, Mockito.times(1)).executeQuery(Mockito.anyString()); // Verify that the statement is executed once
-        Mockito.verify(rs, Mockito.times(1)).next(); // Verify that the result set is called once
+        verify(conn, Mockito.times(1)).createStatement(); // Verify that the connection is created once
+        verify(stmt, Mockito.times(1)).executeQuery(anyString()); // Verify that the statement is executed once
+        verify(rs, Mockito.times(1)).next(); // Verify that the result set is called once
     }
 
     @Test
@@ -38,9 +42,9 @@ public class dbHandlerTest{
         Connection conn = Mockito.mock(Connection.class); // Create a mock connection
         Statement stmt = Mockito.mock(Statement.class); // Create a mock statement
         ResultSet rs = Mockito.mock(ResultSet.class); // Create a mock result set
-        Mockito.when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
-        Mockito.when(stmt.executeQuery(Mockito.anyString())).thenReturn(rs); // When the statement is executed, return the mock result set
-        Mockito.when(rs.next()).thenReturn(false); // When the result set is called, return false
+        when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
+        when(stmt.executeQuery(anyString())).thenReturn(rs); // When the statement is executed, return the mock result set
+        when(rs.next()).thenReturn(false); // When the result set is called, return false
 
         dbHandler handler = new dbHandler(); // Create a new instance of the dbHandler class
         handler.conn = conn; // Set the connection to the mock connection
@@ -50,9 +54,9 @@ public class dbHandlerTest{
 
         // Assert
         assertFalse(result); // Verify that the result is false
-        Mockito.verify(conn, Mockito.times(1)).createStatement(); // Verify that the connection is created once
-        Mockito.verify(stmt, Mockito.times(1)).executeQuery(Mockito.anyString()); // Verify that the statement is executed once
-        Mockito.verify(rs, Mockito.times(1)).next(); // Verify that the result set is called once
+        verify(conn, Mockito.times(1)).createStatement(); // Verify that the connection is created once
+        verify(stmt, Mockito.times(1)).executeQuery(anyString()); // Verify that the statement is executed once
+        verify(rs, Mockito.times(1)).next(); // Verify that the result set is called once
     }
 
    @Test
@@ -61,12 +65,12 @@ public class dbHandlerTest{
         Connection conn = Mockito.mock(Connection.class); // Create a mock connection
         PreparedStatement statement = Mockito.mock(PreparedStatement.class); // Create a mock statement
         ResultSet resultSet = Mockito.mock(ResultSet.class); // Create a mock result set
-        Mockito.when(conn.prepareStatement(Mockito.anyString())).thenReturn(statement); // When the connection is created, return the mock statement
-        Mockito.when(statement.executeQuery()).thenReturn(resultSet); // When the statement is executed, return the mock result set
+        when(conn.prepareStatement(anyString())).thenReturn(statement); // When the connection is created, return the mock statement
+        when(statement.executeQuery()).thenReturn(resultSet); // When the statement is executed, return the mock result set
 
-        Mockito.when(resultSet.next()).thenReturn(true, false); // First time true, second time false
-        Mockito.when(resultSet.getInt(Mockito.anyString())).thenReturn(1).thenReturn(30);; // First time 1, second time 30
-        Mockito.when(resultSet.getString(Mockito.anyString())).thenReturn("John"); // First time John
+        when(resultSet.next()).thenReturn(true, false); // First time true, second time false
+        when(resultSet.getInt(anyString())).thenReturn(1).thenReturn(30);; // First time 1, second time 30
+        when(resultSet.getString(anyString())).thenReturn("John"); // First time John
 
         dbHandler handler = new dbHandler(); // Create a new dbHandler object
         handler.conn = conn; // Set the connection to the mocked connection
@@ -88,14 +92,14 @@ public class dbHandlerTest{
         Connection conn = Mockito.mock(Connection.class); // Create a mock connection
         PreparedStatement statement = Mockito.mock(PreparedStatement.class); // Create a mock statement
         ResultSet resultSet = Mockito.mock(ResultSet.class); // Create a mock result set
-        Mockito.when(conn.prepareStatement(Mockito.anyString())).thenReturn(statement); // When the connection is created, return the mock statement
-        Mockito.when(statement.executeQuery()).thenReturn(resultSet); // When the statement is executed, return the mock result set
+        when(conn.prepareStatement(anyString())).thenReturn(statement); // When the connection is created, return the mock statement
+        when(statement.executeQuery()).thenReturn(resultSet); // When the statement is executed, return the mock result set
 
-        Mockito.when(resultSet.next()).thenReturn(true, false); // First time true, second time false
-        Mockito.when(resultSet.getInt(Mockito.anyString())).thenReturn(1); // First time 1
-        Mockito.when(resultSet.getString(Mockito.anyString())).thenReturn("Task 1"); //
-        Mockito.when(resultSet.getBoolean(Mockito.anyString())).thenReturn(false);
-        Mockito.when(resultSet.getInt(Mockito.anyString())).thenReturn(1);
+        when(resultSet.next()).thenReturn(true, false); // First time true, second time false
+        when(resultSet.getInt(anyString())).thenReturn(1); // First time 1
+        when(resultSet.getString(anyString())).thenReturn("Task 1"); //
+        when(resultSet.getBoolean(anyString())).thenReturn(false);
+        when(resultSet.getInt(anyString())).thenReturn(1);
 
         dbHandler handler = new dbHandler(); // Create a new dbHandler object
         handler.conn = conn; // Set the connection to the mocked connection
@@ -111,12 +115,12 @@ public class dbHandlerTest{
         assertFalse(todo.isDone()); // Check that the todo is not done
 
         assertEquals(1, todo.getAssignedTo()); // Check that the assignedTo is 1
-        Mockito.verify(conn, Mockito.times(1)).prepareStatement(Mockito.anyString()); // Verify that the connection is created once
-        Mockito.verify(statement, Mockito.times(1)).executeQuery(); // Verify that the statement is executed once
-        Mockito.verify(resultSet, Mockito.times(2)).next(); // Verify that the result set is called twice
-        Mockito.verify(resultSet, Mockito.times(2)).getInt(Mockito.anyString()); // Verify that the result set is called twice
-        Mockito.verify(resultSet, Mockito.times(1)).getString(Mockito.anyString()); // Verify that the result set is called once
-        Mockito.verify(resultSet, Mockito.times(1)).getBoolean(Mockito.anyString()); // Verify that the result set is called once
+        verify(conn, Mockito.times(1)).prepareStatement(anyString()); // Verify that the connection is created once
+        verify(statement, Mockito.times(1)).executeQuery(); // Verify that the statement is executed once
+        verify(resultSet, Mockito.times(2)).next(); // Verify that the result set is called twice
+        verify(resultSet, Mockito.times(2)).getInt(anyString()); // Verify that the result set is called twice
+        verify(resultSet, Mockito.times(1)).getString(anyString()); // Verify that the result set is called once
+        verify(resultSet, Mockito.times(1)).getBoolean(anyString()); // Verify that the result set is called once
     }
 
     @Test
@@ -124,7 +128,7 @@ public class dbHandlerTest{
         // Arrange
         Connection conn = Mockito.mock(Connection.class); // Create a mock connection
         Statement stmt = Mockito.mock(Statement.class); // Create a mock statement
-        Mockito.when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
+        when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
 
         dbHandler handler = new dbHandler(); // Create a new dbHandler object
         handler.conn = conn; // Set the connection to the mocked connection
@@ -134,64 +138,56 @@ public class dbHandlerTest{
         handler.firstSetUp(todoApp); // Call the firstSetUp method
 
         // Assert
-        Mockito.verify(conn, Mockito.times(2)).createStatement(); // Verify that the connection is created twice
-        Mockito.verify(stmt, Mockito.times(1)).executeUpdate(Mockito.contains("CREATE TABLE IF NOT EXISTS Users")); // Verify that the statement is executed once
-        Mockito.verify(stmt, Mockito.times(1)).executeUpdate(Mockito.contains("CREATE TABLE IF NOT EXISTS ToDoLists")); // Verify that the statement is executed once
+        verify(conn, Mockito.times(2)).createStatement(); // Verify that the connection is created twice
+        verify(stmt, Mockito.times(1)).executeUpdate(Mockito.contains("CREATE TABLE IF NOT EXISTS Users")); // Verify that the statement is executed once
+        verify(stmt, Mockito.times(1)).executeUpdate(Mockito.contains("CREATE TABLE IF NOT EXISTS ToDoLists")); // Verify that the statement is executed once
     }
 
     @Test
-    public void testUpdateUserTable_ShouldInsertUsersIntoDatabase() throws SQLException { // Test the updateUserTable method
+    public void testUpdateUserTable() throws SQLException { // Test the updateUserTable method
         // Arrange
         Connection conn = Mockito.mock(Connection.class); // Create a mock connection
-        Statement stmt = Mockito.mock(Statement.class); // Create a mock statement
-        ResultSet resultSet = Mockito.mock(ResultSet.class); // Create a mock result set
-        Mockito.when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
-        Mockito.when(stmt.executeQuery(Mockito.anyString())).thenReturn(resultSet); // When the statement is executed, return the mock result set
-        Mockito.when(resultSet.next()).thenReturn(false); // First time false
-
-        dbHandler handler = new dbHandler(); // Create a new dbHandler object
-        handler.conn = conn; // Set the connection to the mocked connection
         TodoApp todoApp = new TodoApp(); // Create a new TodoApp object
-        List<User> users = new ArrayList<>(); // Create a new list of users
-        User user = new User(1, "John", 30); // Create a new user
-        users.add(user); // Add the user to the list
-        todoApp.setUsers(users); // Set the users in the TodoApp object
+        dbHandler dbHandler = new dbHandler(); // Create a new dbHandler object
+
+        // Mock the connection.createStatement() method
+        Statement stmt = Mockito.mock(Statement.class);
+        when(conn.createStatement()).thenReturn(stmt);
+
+        List<User> userList = new ArrayList<>();
+        userList.clear();
+        userList.add(new User(1, "John Doe", 25));
+        todoApp.setUsers(userList);
 
         // Act
-        handler.updateUserTable(todoApp); // Call the updateUserTable method
+        dbHandler.updateUserTable(todoApp);
 
         // Assert
-        Mockito.verify(conn, Mockito.times(1)).createStatement(); // Verify that the connection is created once
-        Mockito.verify(stmt, Mockito.times(1)).executeQuery(Mockito.anyString()); // Verify that the statement is executed once
-        Mockito.verify(resultSet, Mockito.times(1)).next(); // Verify that the result set is called once
-        Mockito.verify(stmt, Mockito.times(1)).executeUpdate(Mockito.anyString()); // Verify that the statement is executed once
+        List userCheck = dbHandler.loadUsersFromDatabase();
+        assertEquals(userList.size(), userCheck.size());
     }
 
     @Test
-    public void testUpdateToDoListsTable_ShouldInsertTodoListsIntoDatabase() throws SQLException { // Test the updateToDoListsTable method
+    public void testUpdateToDoTable() throws SQLException { // Test the updateToDoTable method
         // Arrange
         Connection conn = Mockito.mock(Connection.class); // Create a mock connection
-        Statement stmt = Mockito.mock(Statement.class); // Create a mock statement
-        ResultSet resultSet = Mockito.mock(ResultSet.class); // Create a mock result set
-        Mockito.when(conn.createStatement()).thenReturn(stmt); // When the connection is created, return the mock statement
-        Mockito.when(stmt.executeQuery(Mockito.anyString())).thenReturn(resultSet); // When the statement is executed, return the mock result set
-        Mockito.when(resultSet.next()).thenReturn(false); // First time false
+        TodoApp todoApp1 = new TodoApp(); // Create a new TodoApp object
+        dbHandler dbHandler1 = new dbHandler(); // Create a new dbHandler object
 
-        dbHandler handler = new dbHandler(); // Create a new dbHandler object
-        handler.conn = conn;// Set the connection to the mocked connection
-        TodoApp todoApp = new TodoApp(); // Create a new TodoApp object
-        List<Todo> todos = new ArrayList<>(); // Create a new list of todos
-        Todo todo = new Todo(1, "Task 1", false, 1); // Create a new todo
-        todos.add(todo); // Add the todo to the list
-        todoApp.setTodos(todos); // Set the todos in the TodoApp object
+        // Mock the connection.createStatement() method
+        Statement stmt = Mockito.mock(Statement.class);
+        when(conn.createStatement()).thenReturn(stmt);
+
+        List<Todo> todoList1 = new ArrayList<>();
+        todoList1.clear();
+        todoList1.add(new Todo (1, "Task 1", false, 1));
+        todoApp1.setTodos(todoList1);
 
         // Act
-        handler.updateToDoListsTable(todoApp); // Call the updateToDoListsTable method
+        dbHandler1.updateToDoListsTable(todoApp1);
 
         // Assert
-        Mockito.verify(conn, Mockito.times(1)).createStatement(); // Verify that the connection is created once
-        Mockito.verify(stmt, Mockito.times(1)).executeQuery(Mockito.anyString()); // Verify that the statement is executed once
-        Mockito.verify(resultSet, Mockito.times(1)).next(); // Verify that the result set is called once
-        Mockito.verify(stmt, Mockito.times(1)).executeUpdate(Mockito.anyString()); // Verify that the statement is executed once
+        List <Todo> toDoCheck = dbHandler1.loadTodosFromDatabase();
+        assertEquals(todoList1.size(), toDoCheck.size());
     }
 }
