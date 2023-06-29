@@ -147,7 +147,7 @@ public class dbHandler {
 
 
                     String checkUserSql = "SELECT * FROM Users WHERE id=" + id; // Query to check if the user already exists
-                    ResultSet resultSet = stmt.executeQuery(checkUserSql);
+                    ResultSet resultSet = stmt.executeQuery(checkUserSql); // Executes the query
 
 
                     if (!resultSet.next()) { // If the user doesn't exist, insert them into the database

@@ -28,7 +28,7 @@ public class Menu {
             boolean done;
             int assignedTo;
 
-            System.out.println("Please choose an option:");
+            System.out.println("\nPlease choose an option:");
             System.out.println("1. Create ");
             System.out.println("2. Delete ");
             System.out.println("3. Update ");
@@ -66,7 +66,6 @@ public class Menu {
                             System.out.println("What ID should it be assigned to?:");
                             assignedTo = scan.nextInt();
                             todoApp.createTodo(id, text, done, assignedTo);
-
                             break;
                        }
                        break; // End of case 1 main menu
@@ -105,23 +104,25 @@ public class Menu {
                     break; // End of case 2 main menu
 
                 case 3: // Update
-                int option_3 = scan.nextInt();
+                    System.out.println("1. Update an user");
+                    System.out.println("2. Update a todo");
+                    int option_3 = scan.nextInt();
                 switch(option_3){
                     case 1: // Update an user
-                        System.out.println("Please enter the user ID:");
+                        System.out.println("Please enter the user ID you want to update:");
                         id = scan.nextInt();
-                        System.out.println("Please enter the user name:");
+                        System.out.println("Please enter the new user name:");
                         scan.nextLine();
                         name = scan.nextLine();
-                        System.out.println("Please enter the user age:");
+                        System.out.println("Please enter the new user age:");
                         age = scan.nextInt();
                         todoApp.updateUser(id, name, age);
                         break;
 
                     case 2: // Update a todo
-                        System.out.println("Please enter the todo ID:");
+                        System.out.println("Please enter the todo ID you want to update:");
                         id = scan.nextInt();
-                        System.out.println("Please enter the todo text:");
+                        System.out.println("Please enter the new todo text:");
                         scan.nextLine();
                         text = scan.nextLine();
                         System.out.println("Is it done? (true/false):");
@@ -174,7 +175,7 @@ public class Menu {
                 case 5: // Exit
                     online = false;
                     System.out.println("Thank you for using the TodoApp!");
-                   // dbhandler.updateUserTable(todoApp);
+                    dbhandler.updateUserTable(todoApp);
                     dbhandler.updateToDoListsTable(todoApp);
                     break;
             }
